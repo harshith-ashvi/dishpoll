@@ -1,4 +1,4 @@
-import { Avatar, Container, Typography, Grid, TextField, Button } from "@mui/material";
+import { Avatar, Container, Typography, Grid, TextField, Button, InputAdornment, IconButton } from "@mui/material";
 import { Box } from "@mui/system";
 import React, { useState, useEffect } from "react";
 import KeyboardArrowRightOutlinedIcon from '@mui/icons-material/KeyboardArrowRightOutlined';
@@ -6,6 +6,8 @@ import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import * as Yup from "yup";
 import { useFormik } from "formik";
 import { useDispatch, useSelector } from "react-redux";
+import VisibilityOffOutlinedIcon from '@mui/icons-material/VisibilityOffOutlined';
+import VisibilityOutlinedIcon from '@mui/icons-material/VisibilityOutlined';
 import { addUser, clearError, userError } from "../../actions/userAction";
 
 const mainBoxStyle = {
@@ -30,6 +32,7 @@ const validationSchema = Yup.object({
 })
 
 const Login = (props) => {
+    const [ showPassword, setShowPassword ] = useState(false)
     const dispatch = useDispatch()
     const loginError = useSelector(state => state.user.errors)
 
@@ -100,6 +103,22 @@ const Login = (props) => {
                                 onChange={handleChange}
                                 error={errors.hasOwnProperty("password")}
                                 helperText={errors.password && errors.password}
+                                type={showPassword? "text":"password"}
+                                InputProps={{
+                                    endAdornment: (
+                                        values.password.trim().length > 0 && (
+                                            <InputAdornment position="end">
+                                                <IconButton onClick={() => setShowPassword(!showPassword)}>
+                                                    { showPassword? (
+                                                        <VisibilityOutlinedIcon/>
+                                                    ) : (
+                                                        <VisibilityOffOutlinedIcon/>
+                                                    ) }
+                                                </IconButton>
+                                            </InputAdornment>
+                                        )
+                                    )
+                                }}
                             />
                         </Grid>
 

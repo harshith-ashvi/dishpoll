@@ -18,6 +18,10 @@ const userReducer = (state = userInitialState, action) => {
             return {...state, data: action.payload}
         }
 
+        case "REMOVE_USER" : {
+            return {...state, data: {}}
+        }
+
         default : {
             return {...state}
         }

@@ -17,3 +17,9 @@ export const addUser = (user) => {
         payload: user
     }
 }
+
+export const removeUser = () => {
+    return {
+        type: "REMOVE_USER"
+    }
+}

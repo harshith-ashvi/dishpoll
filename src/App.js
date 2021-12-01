@@ -1,7 +1,9 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { BrowserRouter as Router } from "react-router-dom"
+import { useDispatch } from "react-redux";
 import Navbar from "./components/Navbar";
 import RouteComp from "./components/RouteComp";
+import { addUser } from "./actions/userAction";
 
 const users = [
   {
@@ -34,6 +36,16 @@ const users = [
 localStorage.setItem("users", JSON.stringify(users))
 
 const App = (props) => {
+  const dispatch = useDispatch()
+
+  useEffect(() => {
+    const userLogged = localStorage.getItem("user")
+    if (userLogged) {
+      const findUser = users.find((user) => user.id === Number(userLogged))
+      dispatch(addUser(findUser))
+    }
+  })
+
   return (
     <Router>
       <Navbar/>
