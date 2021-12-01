@@ -1,5 +1,7 @@
 import React from "react";
 import { BrowserRouter as Router } from "react-router-dom"
+import Navbar from "./components/Navbar";
+import RouteComp from "./components/RouteComp";
 
 const users = [
   {
@@ -34,7 +36,8 @@ localStorage.setItem("users", JSON.stringify(users))
 const App = (props) => {
   return (
     <Router>
-      Dishpoll
+      <Navbar/>
+      <RouteComp/>
     </Router>
   );
 }
