@@ -41,7 +41,7 @@ const Login = (props) => {
     }, [])
 
     const redirectLogin = () => {
-        props.history.push("/")
+        props.history.push("/dishes")
     }
 
     const { handleSubmit, handleChange, values, errors } = useFormik({
@@ -55,7 +55,6 @@ const Login = (props) => {
             const users = JSON.parse(localStorage.getItem("users"))
             const findUser = users.find((user) => (user.username === values.username) && (user.email === values.email))
             if (findUser) {
-                console.log(findUser)
                 localStorage.setItem("user", findUser.id)
                 dispatch(clearError())
                 dispatch(addUser(findUser))

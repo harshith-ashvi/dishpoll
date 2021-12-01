@@ -18,6 +18,10 @@ const Navbar = (props) => {
         history.push("/")
     }
 
+    const handleClick = (route) => {
+        history.push(route)
+    }
+
     return (
         <Box sx={{ flexGrow: 1 }}>
             <AppBar position="static">
@@ -27,7 +31,7 @@ const Navbar = (props) => {
                     </Typography>
                     { Object.keys(user).length > 0 && (
                         <>
-                            <Button color="inherit">Dishes</Button>
+                            <Button color="inherit" onClick={() => handleClick("/dishes")}>Dishes</Button>
                             <Button color="inherit">Polls</Button>
                             <Button color="inherit" onClick={handleLogout}>Logout</Button>
                         </>
