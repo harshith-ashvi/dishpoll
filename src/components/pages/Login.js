@@ -53,7 +53,8 @@ const Login = (props) => {
         validateOnChange: false,
         onSubmit: (values, { resetForm }) => {
             const users = JSON.parse(localStorage.getItem("users"))
-            const findUser = users.find((user) => (user.username === values.username) && (user.email === values.email))
+            console.log(users)
+            const findUser = users.find((user) => ((user.username === values.username) && (user.password === values.password)))
             if (findUser) {
                 localStorage.setItem("user", findUser.id)
                 dispatch(clearError())
