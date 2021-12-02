@@ -2,7 +2,7 @@ import { Container, Paper, Typography } from "@mui/material";
 import { Box } from "@mui/system";
 import React from "react";
 import { useSelector } from "react-redux";
-import findDishPoints from "../../helper functions/findDishPoints";
+import { findDishPointsViaValue } from "../../helper functions/findDishPoints";
 
 const MyDishes = (props) => {
     const favDishes = useSelector(state => state.favoriteDishes)
@@ -15,13 +15,13 @@ const MyDishes = (props) => {
                 </Typography>
                 <Box sx={{mt: 2, mb: 2, ml: 4}}>
                     <Typography variant="h6" gutterBottom>
-                        30 Points / Rank 1 : { findDishPoints(favDishes, 30) }
+                        30 Points / Rank 1 : { findDishPointsViaValue(favDishes, 30) }
                     </Typography>
                     <Typography variant="h6" gutterBottom>
-                        20 Points / Rank 2 : { findDishPoints(favDishes, 20) }
+                        20 Points / Rank 2 : { findDishPointsViaValue(favDishes, 20) }
                     </Typography>
                     <Typography variant="h6" gutterBottom>
-                        10 Points / Rank 3 : { findDishPoints(favDishes, 10) }
+                        10 Points / Rank 3 : { findDishPointsViaValue(favDishes, 10) }
                     </Typography>
                 </Box>
             </Paper>

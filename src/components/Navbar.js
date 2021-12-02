@@ -32,7 +32,7 @@ const Navbar = (props) => {
                     { Object.keys(user).length > 0 && (
                         <>
                             <Button color="inherit" onClick={() => handleClick("/dishes")}>Dishes</Button>
-                            <Button color="inherit">Polls</Button>
+                            <Button color="inherit" onClick={() => handleClick("/poll")}>Poll</Button>
                             <Button color="inherit" onClick={handleLogout}>Logout</Button>
                         </>
                     ) }
