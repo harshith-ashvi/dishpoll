@@ -4,6 +4,7 @@ import { useDispatch } from "react-redux";
 import { startGetDishes } from "../../actions/dishesActions";
 import { getAllFavDishes } from "../../actions/favoriteDishesActions";
 import DishesContainer from "../dishes/DishesContainer";
+import MyDishes from "../dishes/MyDishes";
 
 
 const Dishes = (props) => {
@@ -23,6 +24,7 @@ const Dishes = (props) => {
 
     return (
         <Container sx={{mb: 6}}>
+            <MyDishes/>
             <DishesContainer/>
         </Container>
     )
