@@ -1,27 +1,16 @@
 import { Card, CardActions, CardContent, CardMedia, FormControl, MenuItem, Select, Typography, InputLabel } from "@mui/material";
 import React, { useState, useEffect } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { addFavDish, removeDish, replaceFavDish } from "../../actions/favoriteDishesActions";
-
-const getStoredInitialValue = (key, initialValue, id) => {
-    const savedDishes = JSON.parse(localStorage.getItem(key))
-    const user = JSON.parse(localStorage.getItem("user"))
-    if (!savedDishes || !savedDishes.hasOwnProperty(user)){
-        return initialValue
-    } else {
-        const currentDish = savedDishes[user].find((dish) => dish.id === id)
-        if(currentDish) {
-            return currentDish.value
-        } else {
-            return initialValue
-        }
-    }
-}
+import initialDishValue from "../../helper functions/initialDishValue";
 
 const DishItem = (props) => {
     const { id, dishName, description, image } = props
+
+    const favDishes = useSelector(state => state.favoriteDishes)
+
     const [ points, setPoints ] = useState(() => {
-        return getStoredInitialValue("favDishes", "", id)
+        return initialDishValue(favDishes, id, "")
     })
 
     const dispatch = useDispatch()
