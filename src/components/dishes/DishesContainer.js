@@ -6,7 +6,7 @@ import DishItem from "./DishItem";
 const DishesContainer = (props) => {
     const dishes = useSelector(state => state.dishes)
 
-    const { isLoading, data } = dishes
+    const { data } = dishes
 
     return (
         <Container sx={{mt: 5}}>

@@ -31,3 +31,9 @@ export const allDishes = (dishes) => {
         payload: dishes
     }
 }
+
+export const removeAllDishes = () => {
+    return {
+        type: "REMOVE_ALL_DISHES"
+    }
+}

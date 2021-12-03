@@ -14,6 +14,10 @@ const dishesReducer = (state = dishesInitialState, action) => {
             return {...state, data: action.payload}
         }
 
+        case "REMOVE_ALL_DISHES" : {
+            return {...state, data: []}
+        }
+
         default : {
             return {...state}
         }

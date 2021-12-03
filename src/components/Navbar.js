@@ -4,6 +4,7 @@ import { AppBar, Toolbar, Typography, Button } from "@mui/material";
 import { useSelector, useDispatch } from "react-redux";
 import { useHistory } from "react-router";
 import { removeUser } from "../actions/userAction";
+import { removeAllDishes } from "../actions/dishesActions";
 
 
 const Navbar = (props) => {
@@ -14,6 +15,7 @@ const Navbar = (props) => {
     const handleLogout = () => {
         alert("Successfully logged out")
         dispatch(removeUser())
+        dispatch(removeAllDishes())
         localStorage.removeItem("user")
         history.push("/")
     }

@@ -57,6 +57,7 @@ const Login = (props) => {
             const findUser = users.find((user) => ((user.username === values.username) && (user.password === values.password)))
             if (findUser) {
                 localStorage.setItem("user", findUser.id)
+                alert("Successfully Logged in")
                 dispatch(clearError())
                 dispatch(addUser(findUser))
                 resetForm()

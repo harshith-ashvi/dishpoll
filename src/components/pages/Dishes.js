@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { startGetDishes } from "../../actions/dishesActions";
 import DishesContainer from "../dishes/DishesContainer";
 import MyDishes from "../dishes/MyDishes";
+import { getAllFavDishes } from "../../actions/favoriteDishesActions";
 
 
 const Dishes = (props) => {
@@ -14,7 +15,16 @@ const Dishes = (props) => {
     useEffect(() => {
         if (allDishes.length === 0 && Object.keys(user).length > 0) {
             dispatch(startGetDishes())
+            const favDishes = JSON.parse(localStorage.getItem("favDishes"))
+            const userId = JSON.parse(localStorage.getItem("user"))
+            if(favDishes === null){
+                localStorage.setItem("favDishes", JSON.stringify({}))
+            } else if (favDishes.hasOwnProperty(userId)) {
+                const currentUserFavDishes = favDishes[userId]
+                dispatch(getAllFavDishes(currentUserFavDishes))
+            }
         }
+        
     }, [])
 
     return (

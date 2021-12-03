@@ -24,6 +24,11 @@ const favoriteDishesReducer = (state = favoriteDishesInitialState, action) => {
             })
         }
 
+        case "REMOVE_ALL_DISHES" : {
+            return []
+        }
+
+
         default : {
             return [...state]
         }
