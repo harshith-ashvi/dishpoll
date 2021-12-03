@@ -11,11 +11,6 @@ const columns = [
     {id: "myPoints", label: "My Points", minWidth: 180}
 ]
 
-const findDish = (dishes, value) => {
-    const dishValue = dishes.find(dish => dish.id === value)
-    return dishValue? dishValue.value : 0
-}
-
 const PollTable = (props) => {
     const allFavDishes = JSON.parse(localStorage.getItem("favDishes"))
     const allDishes = useSelector(state => state.dishes.data)
