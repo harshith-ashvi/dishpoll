@@ -4,6 +4,8 @@ import { useDispatch } from "react-redux";
 import Navbar from "./components/Navbar";
 import RouteComp from "./components/RouteComp";
 import { addUser } from "./actions/userAction";
+import { startGetDishes } from "./actions/dishesActions";
+import { getAllFavDishes } from "./actions/favoriteDishesActions";
 
 const users = [
   {
@@ -43,8 +45,17 @@ const App = (props) => {
     if (userLogged) {
       const findUser = users.find((user) => user.id === Number(userLogged))
       dispatch(addUser(findUser))
+      dispatch(startGetDishes())
+
+      const favDishes = JSON.parse(localStorage.getItem("favDishes"))
+      if(favDishes === null){
+          localStorage.setItem("favDishes", JSON.stringify({}))
+      } else if (favDishes.hasOwnProperty(findUser.id)) {
+          const currentUserFavDishes = favDishes[findUser.id]
+          dispatch(getAllFavDishes(currentUserFavDishes))
+      }
     }
-  })
+  }, [])
 
   return (
     <Router>
