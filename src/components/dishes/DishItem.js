@@ -41,6 +41,7 @@ const DishItem = (props) => {
                 localStorage.setItem("favDishes", JSON.stringify(allUserFavDish))
             } else {
                 const allUserFavDish = {...selectedDishes, [userId]: [{...props, value: points}]}
+                dispatch(addFavDish({...props, value: points}))
                 localStorage.setItem("favDishes", JSON.stringify(allUserFavDish))
             }
         }
