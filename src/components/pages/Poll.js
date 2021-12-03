@@ -11,6 +11,7 @@ const Poll = (props) => {
         <Container sx={{mb: 6}}>
             { Object.keys(user).length === 0? (
                 <Paper sx={{padding: 5, margin: 5}} elevation={0}>
+                    {/*Alert if user not logged in*/}
                     <Alert severity="error">You Need to <Link href="/" underline="hover">Login</Link> first.</Alert>
                 </Paper>
             ) : (

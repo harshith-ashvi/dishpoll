@@ -1,70 +1,71 @@
-# Getting Started with Create React App
+# DishPoll
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+DishPoll is a small react app for ranking dishes. Multiple users should be able to login into the app and vote for their favourite dishes and see the results of the poll.
 
-## Available Scripts
+---
 
-In the project directory, you can run:
+### 🛠 Tech Stack
 
-### `npm start`
+[![React Badge](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)](#)
+[![Redux Badge](https://img.shields.io/badge/Redux-593D88?style=for-the-badge&logo=redux&logoColor=white)](#)
+[![Javascript Badge](https://img.shields.io/badge/JavaScript-323330?style=for-the-badge&logo=javascript&logoColor=F7DF1E)](#)
+
+#### Packages
+
+material UI, react-router-dom, axios, formik, yup, react-redux, redux-thunk
+
+---
+
+### npm install
+
+```
+npm install
+```
+
+Install all the packages after downloading/cloning the repository to local system.
+
+### npm start
+
+```
+npm start
+```
 
 Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+### Demo
 
-### `npm test`
+[![YouTube Icon](https://img.shields.io/badge/YouTube-FF0000?style=for-the-badge&logo=youtube&logoColor=white)](https://www.youtube.com/watch?v=6XhaNTtY3UM) <br/>
+Click the above icon to watch the video demo of DishPoll application on YouTube.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+---
 
-### `npm run build`
+### Features
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- Authentication.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+  - User must login using username and password to verify their identity to use the application.
+  - As there is no backend to get JWT (token), user ID is stored as token. Using this anytime the user reloads the page, store gets updated.
+  - If the user enters incorrect username/password or it does not match with stored list of user, an error message is showed in the login page.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- Dish Module
 
-### `npm run eject`
+  - Authenticated users can see all the avaliable dishes fetched from the API for them to vote.
+  - Authenticated users can select their top 3 favorite dishes by giving them points (Rank 1 gets 30 points, Rank 2 gets 20, Rank 3 gets 10).
+  - Selected dishes by the user can can seen on top of Dish page.
+  - User can remove the selected dish by changing the dropdown value to None.
+  - If user gives same point/rank to two dishes, the dish with latest value gets updated in My Dish section (Final dish with same value as other favourite is prefered).
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+- Poll Module.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+  - Authenticated users can see all the votes given by other users. The dishes are displayed in order of descending order i.e, most votes to least votes.
+  - The points given by the user for the dishes are displayed oin the final column.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+- Login Alert
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+  - If a user tries to access any page without logging in, an alert message will be shown to login first.
 
-## Learn More
+- 404 Page
+  - 404 Not Found Component added if user search url that doesn't exist.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+---

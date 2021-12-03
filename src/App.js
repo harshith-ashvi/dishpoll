@@ -43,10 +43,11 @@ const App = (props) => {
   useEffect(() => {
     const userLogged = localStorage.getItem("user")
     if (userLogged) {
+      //get user details on reload
       const findUser = users.find((user) => user.id === Number(userLogged))
       dispatch(addUser(findUser))
       dispatch(startGetDishes())
-
+      //to get favourite dishes of user form localStorage on reload of page
       const favDishes = JSON.parse(localStorage.getItem("favDishes"))
       if(favDishes === null){
           localStorage.setItem("favDishes", JSON.stringify({}))

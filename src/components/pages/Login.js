@@ -22,6 +22,7 @@ const avatarStyle = {
     bgcolor: "secondary.main"
 }
 
+//validation using yup
 const validationSchema = Yup.object({
     username: Yup
         .string()
@@ -32,18 +33,22 @@ const validationSchema = Yup.object({
 })
 
 const Login = (props) => {
-    const [ showPassword, setShowPassword ] = useState(false)
+    const [ showPassword, setShowPassword ] = useState(false) //to show/hide password
     const dispatch = useDispatch()
+    //errors that occured when logging in (if any)
     const loginError = useSelector(state => state.user.errors)
 
     useEffect(() => {
+        //to clear errors on page load (if any)
         dispatch(clearError())
     }, [])
 
+    //to route to different page after successful login
     const redirectLogin = () => {
         props.history.push("/dishes")
     }
 
+    //validation, value initial state, update and errors using formik
     const { handleSubmit, handleChange, values, errors } = useFormik({
         initialValues: {
             username: "",
@@ -53,7 +58,6 @@ const Login = (props) => {
         validateOnChange: false,
         onSubmit: (values, { resetForm }) => {
             const users = JSON.parse(localStorage.getItem("users"))
-            console.log(users)
             const findUser = users.find((user) => ((user.username === values.username) && (user.password === values.password)))
             if (findUser) {
                 localStorage.setItem("user", findUser.id)
@@ -106,6 +110,7 @@ const Login = (props) => {
                                 helperText={errors.password && errors.password}
                                 type={showPassword? "text":"password"}
                                 InputProps={{
+                                    //to show or hide passord
                                     endAdornment: (
                                         values.password.trim().length > 0 && (
                                             <InputAdornment position="end">
@@ -125,6 +130,7 @@ const Login = (props) => {
 
                         <Grid item xs={12}>
                             <Typography variant="subtitle1" gutterBottom sx={{color: "red"}}>
+                                {/*Display error if email/passord does not match or does not exist */}
                                 { loginError.errors && loginError.errors }
                             </Typography>
                         </Grid>

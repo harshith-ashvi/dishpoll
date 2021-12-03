@@ -1,3 +1,4 @@
+//find all the unique favourite dishes
 export const uniqueFavDishes = (allFavDishes) => {
     const uniqFavIds = []
     allFavDishes.forEach(dish => {
@@ -8,6 +9,7 @@ export const uniqueFavDishes = (allFavDishes) => {
     return uniqFavIds
 }
 
+//favourite dishes with the total votes/points
 export const favDishesUnion = (uniqueDishesId, allFavDishes) => {
     const selectedDishesUnion = []
 
@@ -20,6 +22,7 @@ export const favDishesUnion = (uniqueDishesId, allFavDishes) => {
     return selectedDishesUnion
 }
 
+//get all dishes and with their votes and sort in descending order
 export const pollFormatData = (favDish, allDishes) => {
     const selectedDishes = []
     for (const key in favDish) {

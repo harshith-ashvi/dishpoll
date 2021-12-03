@@ -14,6 +14,7 @@ const Navbar = (props) => {
 
     const handleLogout = () => {
         alert("Successfully logged out")
+         //remove user details, dish and favourite dish details after logout
         dispatch(removeUser())
         dispatch(removeAllDishes())
         localStorage.removeItem("user")

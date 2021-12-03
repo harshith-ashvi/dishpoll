@@ -1,5 +1,6 @@
 import axios from "axios";
 
+//to get all the dishes from API
 export const startGetDishes = () => {
     return (
         (dispatch) => {
@@ -19,12 +20,14 @@ export const startGetDishes = () => {
     )
 }
 
+//to aving loading option while the data is being fetched
 export const dataLoading = () => {
     return {
         type: "DATA_LOADING"
     }
 }
 
+//to send all dishes data to reducer
 export const allDishes = (dishes) => {
     return {
         type: "ALL_DISHES",

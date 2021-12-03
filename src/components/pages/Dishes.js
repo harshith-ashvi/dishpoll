@@ -15,6 +15,7 @@ const Dishes = (props) => {
     useEffect(() => {
         if (allDishes.length === 0 && Object.keys(user).length > 0) {
             dispatch(startGetDishes())
+            //to get favourite dishes of user form localStorage
             const favDishes = JSON.parse(localStorage.getItem("favDishes"))
             const userId = JSON.parse(localStorage.getItem("user"))
             if(favDishes === null){
@@ -31,6 +32,7 @@ const Dishes = (props) => {
         <Container sx={{mb: 6}}>
             { Object.keys(user).length === 0? (
                 <Paper sx={{padding: 5, margin: 5}} elevation={0}>
+                    {/*Alert if user not logged in*/}
                     <Alert severity="error">You Need to <Link href="/" underline="hover">Login</Link> first.</Alert>
                 </Paper>
             ) : (

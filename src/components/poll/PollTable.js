@@ -48,21 +48,8 @@ const PollTable = (props) => {
                                     <TableRow
                                         key={dish.id}
                                         hover
-                                        sx={{
-                                            color: () => {
-                                                if (!myPoints) {
-                                                    return "primary"
-                                                }
-                                            }
-                                        }}
                                     >
-                                        <TableCell align="center" sx={{
-                                            color: () => {
-                                                if (!myPoints) {
-                                                    return "#000000"
-                                                }
-                                            }
-                                        }}>{i + 1}</TableCell>
+                                        <TableCell align="center">{i + 1}</TableCell>
                                         <TableCell align="center">{dish.dishName}</TableCell>
                                         <TableCell align="center">{dish.value}</TableCell>
                                         <TableCell align="center">{myPoints}</TableCell>
